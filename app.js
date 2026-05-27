@@ -1,46 +1,75 @@
-// 模擬的餐廳資料庫 (未來可以串接 Google API)
-const restaurantDatabase = [
-    { name: "隱市壽司", cuisine: "日式", distance: 300, time: ["lunch", "dinner"], rating: 4.7 },
-    { name: "大碗公牛肉麵", cuisine: "台式", distance: 500, time: ["lunch", "dinner"], rating: 4.2 },
-    { name: "好時光義大利麵", cuisine: "義式", distance: 1200, time: ["lunch", "dinner"], rating: 4.5 },
-    { name: "深夜拉麵屋", cuisine: "日式", distance: 800, time: ["dinner", "supper"], rating: 4.6 },
-    { name: "美式轟炸雞", cuisine: "美式", distance: 400, time: ["lunch", "dinner", "supper"], rating: 3.9 },
-    { name: "巷口黑白切", cuisine: "台式", distance: 200, time: ["dinner", "supper"], rating: 4.0 }
-];
+ let map;
+let service;
 
-document.getElementById('searchBtn').addEventListener('click', function() {
-    // 1. 獲取使用者輸入的值
-    const selectedCuisine = document.getElementById('cuisine').value;
-    const maxDistance = parseInt(document.getElementById('distance').value) || 1000;
-    const selectedTime = document.getElementById('mealTime').value;
+// 初始化（取得使用者當前位置）
+function getRestaurants() {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = "正在定位您的位置並搜尋餐廳...";
 
-    // 2. 進行條件篩選
-    const filteredRestaurants = restaurantDatabase.filter(repo => {
-        const matchCuisine = (selectedCuisine === 'all' || repo.cuisine === selectedCuisine);
-        const matchDistance = (repo.distance <= maxDistance);
-        const matchTime = repo.time.includes(selectedTime);
-        
-        return matchCuisine && matchDistance && matchTime;
-    });
-
-    // 3. 渲染結果到畫面上
-    const resultContainer = document.getElementById('result-container');
-    resultContainer.innerHTML = ''; // 清空上一次的結果
-
-    if (filteredRestaurants.length === 0) {
-        resultContainer.innerHTML = '<p style="color:red; text-align:center;">找不到符合條件的餐廳，試著放寬標準吧！</p>';
-        return;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                searchNearbyPlaces(userLocation);
+            },
+            () => {
+                resultsContainer.innerHTML = "❌ 無法取得您的定位，請開啟瀏覽器定位權限。";
+            }
+        );
+    } else {
+        resultsContainer.innerHTML = "❌ 您的瀏覽器不支援定位功能。";
     }
+}
 
-    // 隨機打亂結果，增加「幫我決定」的趣味性（或直接列出清單）
-    filteredRestaurants.forEach(restaurant => {
+// 呼叫 Google Places API 搜尋周邊餐廳
+function searchNearbyPlaces(location) {
+    const cuisine = document.getElementById('cuisine').value;
+    const distance = document.getElementById('distance').value;
+    const timeOpen = document.getElementById('time').value;
+
+    // 建立一個隱藏的 div 供 PlacesService 使用
+    const dummyElement = document.createElement('div');
+    service = new google.maps.places.PlacesService(dummyElement);
+
+    const request = {
+        location: location,
+        radius: distance,
+        type: ['restaurant'],
+        keyword: cuisine, // 使用者輸入的關鍵字
+        openNow: timeOpen === 'now' // 是否只顯示當前營業中
+    };
+
+    service.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+            displayResults(results);
+        } else {
+            document.getElementById('results').innerHTML = "找不到符合條件的餐廳，換個關鍵字試試看吧！";
+        }
+    });
+}
+
+// 將結果渲染到網頁上
+function displayResults(places) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = ""; // 清空上一次的搜尋
+
+    // 依據評價由高到低排序
+    places.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+    places.forEach(place => {
         const card = document.createElement('div');
         card.className = 'restaurant-card';
+
+        const name = place.name;
+        const rating = place.rating ? `⭐ ${place.rating} (${place.user_ratings_total} 則評價)` : "暫無評價";
+        const address = place.vicinity || "未提供地址";
+
         card.innerHTML = `
-            <h3>${restaurant.name}</h3>
-            <p>類型：${restaurant.cuisine} | 距離：${restaurant.distance} 公尺</p>
-            <p>評價：<span class="rating">⭐ ${restaurant.rating}</span></p>
+            <strong>${name}</strong>
+            <div class="rating">${rating}</div>
+            <p style="font-size: 14px; color: #666; margin: 5px 0 0 0;">📍 ${address}</p>
         `;
-        resultContainer.appendChild(card);
+        resultsContainer.appendChild(card);
     });
-});
+}
+
