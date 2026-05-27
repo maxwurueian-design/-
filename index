@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什麼？餐廳抽選器</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        select, input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .restaurant-card { background: white; padding: 15px; margin-top: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .rating { color: #f39c12; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>🍽️ 今天吃什麼？</h2>
+    
+    <div class="form-group">
+        <label for="cuisine">飲食類型：</label>
+        <select id="cuisine">
+            <option value="all">全部</option>
+            <option value="日式">日式料理</option>
+            <option value="台式">台式便當/小吃</option>
+            <option value="義式">義式餐廳</option>
+            <option value="美式">美式漢堡/速食</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="distance">最大距離 (公尺)：</label>
+        <input type="number" id="distance" value="1000" placeholder="例如: 500">
+    </div>
+
+    <div class="form-group">
+        <label for="mealTime">吃飯時間：</label>
+        <select id="mealTime">
+            <option value="lunch">午餐</option>
+            <option value="dinner">晚餐</option>
+            <option value="supper">宵夜</option>
+        </select>
+    </div>
+
+    <button id="searchBtn">幫我決定！</button>
+
+    <div id="result-container">
+        </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
