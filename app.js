@@ -2,9 +2,9 @@
 let service;
 
 // 初始化（取得使用者當前位置）
-function filterRestaurants() { // 配合 HTML 的按鈕名稱，這裡改為 filterRestaurants
+function getRestaurants() {
     const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = "🔍 正在定位您的位置並搜尋真實餐廳...";
+    resultsContainer.innerHTML = "正在定位您的位置並搜尋餐廳...";
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -27,6 +27,7 @@ function searchNearbyPlaces(location) {
     const distance = document.getElementById('distance').value;
     const timeOpen = document.getElementById('time').value;
 
+    // 建立一個隱藏的 div 供 PlacesService 使用
     const dummyElement = document.createElement('div');
     service = new google.maps.places.PlacesService(dummyElement);
 
@@ -34,50 +35,41 @@ function searchNearbyPlaces(location) {
         location: location,
         radius: distance,
         type: ['restaurant'],
-        keyword: cuisine,
-        openNow: true // 串接真實 API 時，通常直接篩選目前有營業的店
+        keyword: cuisine, // 使用者輸入的關鍵字
+        openNow: timeOpen === 'now' // 是否只顯示當前營業中
     };
 
     service.nearbySearch(request, (results, status) => {
-        const resultsContainer = document.getElementById('results');
-        
-        // 【核心功能】如果找不到符合的，或是 API 回傳沒有結果
-        if (status !== google.maps.places.PlacesServiceStatus.OK || !results || results.length === 0) {
-            resultsContainer.innerHTML = `
-                <div class="no-result">
-                    ❌ 抱歉！目前附近沒有符合您所有條件的餐廳。<br>
-                    <span style="font-size:14px; font-weight:normal; color:#aaa;">建議您可以放大距離或換個飲食類型試試看喔！</span>
-                </div>
-            `;
-            return;
+        if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+            displayResults(results);
+        } else {
+            document.getElementById('results').innerHTML = "找不到符合條件的餐廳，換個關鍵字試試看吧！";
         }
-
-        // 有結果則依據評價由高到低排序並顯示
-        results.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        displayResults(results);
     });
 }
 
-// 將真實結果渲染到網頁上
+// 將結果渲染到網頁上
 function displayResults(places) {
     const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = ""; 
+    resultsContainer.innerHTML = ""; // 清空上一次的搜尋
+
+    // 依據評價由高到低排序
+    places.sort((a, b) => (b.rating || 0) - (a.rating || 0));
 
     places.forEach(place => {
         const card = document.createElement('div');
         card.className = 'restaurant-card';
 
         const name = place.name;
-        const rating = place.rating ? `⭐ ${place.rating} (${place.user_ratings_total || 0} 則評價)` : "暫無評價";
+        const rating = place.rating ? `⭐ ${place.rating} (${place.user_ratings_total} 則評價)` : "暫無評價";
         const address = place.vicinity || "未提供地址";
 
         card.innerHTML = `
-            <div class="restaurant-name">${name}</div>
+            <strong>${name}</strong>
             <div class="rating">${rating}</div>
-            <p style="margin: 8px 0 0 0; font-size: 14px; color: #747d8c;">📍 ${address}</p>
+            <p style="font-size: 14px; color: #666; margin: 5px 0 0 0;">📍 ${address}</p>
         `;
         resultsContainer.appendChild(card);
     });
 }
-
 
