@@ -3,62 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今天吃什麼？餐廳抽選器 (新版 API)</title>
+    <title>今天吃什麼？餐廳抽選器</title>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Microsoft JhengHei', Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; color: #333; }
-        h2 { text-align: center; color: #ff6b6b; }
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select, button { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
-        input:focus, select:focus { outline: none; border-color: #ff6b6b; }
-        button { background-color: #ff6b6b; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        input, select, button { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        button { background-color: #ff6b6b; color: white; border: none; font-size: 16px; cursor: pointer; }
         button:hover { background-color: #ee5253; }
-        .restaurant-card { border: 1px solid #eee; padding: 15px; margin-top: 15px; border-radius: 8px; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .restaurant-name { font-size: 18px; font-weight: bold; color: #2d3436; }
-        .rating { color: #f1c40f; font-weight: bold; margin: 5px 0; }
-        .info-tag { display: inline-block; background-color: #f1f2f6; padding: 3px 8px; border-radius: 4px; font-size: 12px; color: #57606f; margin-right: 5px; }
-        .no-result { text-align: center; padding: 30px; color: #a4b0be; font-size: 16px; font-weight: bold; }
+        .restaurant-card { border: 1px solid #ddd; padding: 15px; margin-top: 15px; border-radius: 5px; }
+        .rating { color: #f1c40f; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <h2>🍽 今天吃什麼？餐廳抽選器</h2>
+    <h2>🍽 今天吃什麼？</h2>
     
     <div class="form-group">
-        <label for="cuisine">1. 飲食類型：</label>
-        <input type="text" id="cuisine" placeholder="例如：拉麵、火鍋、義大利麵 (留白代表不限)">
+        <label for="cuisine">飲食類型：</label>
+        <input type="text" id="cuisine" placeholder="例如：拉麵、火鍋、義大利麵">
     </div>
 
     <div class="form-group">
-        <label for="distance">2. 離使用者距離：</label>
+        <label for="distance">最大距離 (公尺)：</label>
         <select id="distance">
-            <option value="500">500 公尺以內 (走路 5 分鐘)</option>
-            <option value="1000" selected>1000 公尺以內 (走路 10 分鐘)</option>
-            <option value="3000">3000 公尺以內 (車程 10 分鐘)</option>
+            <option value="500">500 公尺 (走路 5 分鐘)</option>
+            <option value="1000" selected>1000 公尺 (走路 10 分鐘)</option>
+            <option value="3000">3000 公尺 (車程 10 分鐘)</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label for="time">3. 吃飯時間：</label>
+        <label for="time">吃飯時間：</label>
         <select id="time">
-            <option value="now">現在 (只顯示營業中餐廳)</option>
-            <option value="anytime">不限時間 (包含休息中餐廳)</option>
+            <option value="now">現在 (只顯示營業中)</option>
+            <option value="anytime">不限時間</option>
         </select>
     </div>
 
-    <button onclick="getUserLocation()">幫我決定！</button>
+    <button onclick="getRestaurants()">幫我決定！</button>
 
-    <hr style="border: 0; height: 1px; background: #ddd; margin: 30px 0;">
+    <hr>
 
-    <h3>🔍 符合條件的真實餐廳 (Places API New)：</h3>
+    <h3>🔍 符合條件的餐廳：</h3>
     <div id="results"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUbMqnq9yZ1_ZJzZCFxoG6sqn-DY3ZR6Y&v=beta&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAUbMqnq9yZ1_ZJzZCFxoG6sqn-DY3ZR6Y&libraries=places"></script>
     <script src="app.js"></script>
 </body>
 </html>
-
 
 
 
