@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今天吃什麼？餐廳抽選器 (免 API 版)</title>
+    <title>今天吃什麼？餐廳抽選器 (自訂距離版)</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Microsoft JhengHei', Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; color: #333; }
@@ -31,13 +31,8 @@
     </div>
 
     <div class="form-group">
-        <label for="distance">2. 離使用者距離：</label>
-        <select id="distance">
-            <option value="500">500 公尺以內 (走路 5 分鐘)</option>
-            <option value="1000" selected>1000 公尺以內 (走路 10 分鐘)</option>
-            <option value="3000">3000 公尺以內 (車程 10 分鐘)</option>
-            <option value="99999">不限距離</option>
-        </select>
+        <label for="distance">2. 離使用者距離 (公尺)：</label>
+        <input type="number" id="distance" min="1" placeholder="請輸入公尺數，例如：800" value="1000">
     </div>
 
     <div class="form-group">
