@@ -1,6 +1,8 @@
-// 彰化市 150 家全系列餐廳地事資料庫 (含精確經緯度、分類、吃飯時段與真實 Google 評分)
+// 彰化市 150 家全系列餐廳資料庫 (含精確經緯度、分類、吃飯時段與真實 Google 評分)
 const restaurantDatabase = [
+    // ═══════════════════════════════════════
     // 👑 彰化傳奇小吃 (肉圓、爌肉飯、在地老店)
+    // ═══════════════════════════════════════
     { name: "阿三肉圓", cuisine: "肉圓", lat: 24.0817, lng: 120.5385, time: ["lunch"], rating: 4.4, reviews: 8500, address: "彰化市三民路242號" },
     { name: "北門口肉圓 (中正總店)", cuisine: "肉圓", lat: 24.0831, lng: 120.5369, time: ["lunch"], rating: 4.0, reviews: 5200, address: "彰化市中正路一段494號" },
     { name: "北門口肉圓 (民生店)", cuisine: "肉圓", lat: 24.0799, lng: 120.5445, time: ["lunch"], rating: 3.9, reviews: 1800, address: "彰化市民生路85號" },
@@ -11,7 +13,7 @@ const restaurantDatabase = [
     { name: "老朱爌肉飯", cuisine: "爌肉飯", lat: 24.0784, lng: 120.5432, time: ["lunch"], rating: 4.3, reviews: 2100, address: "彰化市中民街7號" },
     { name: "阿泉焢肉飯", cuisine: "爌肉飯", lat: 24.0812, lng: 120.5414, time: ["lunch"], rating: 4.2, reviews: 4500, address: "彰化市成功路216號" },
     { name: "夜市爌肉飯", cuisine: "爌肉飯", lat: 24.0753, lng: 120.5408, time: ["dinner"], rating: 4.3, reviews: 3200, address: "彰化市成功路10號" },
-    { name: "魚市場爌肉飯", cuisine: "爌肉飯", lat: 24.0815, lng: 120.5372, time: ["dinner", "midnight"], rating: 4.2, reviews: 3900, address: "彰化市徹底路二段320號" },
+    { name: "魚市場爌肉飯", cuisine: "爌肉飯", lat: 24.0815, lng: 120.5372, time: ["dinner", "midnight"], rating: 4.2, reviews: 3900, address: "彰化市中正路二段320號" },
     { name: "成功路爌肉飯", cuisine: "爌肉飯", lat: 24.0788, lng: 120.5411, time: ["lunch"], rating: 4.4, reviews: 560, address: "彰化市成功路105號" },
     { name: "中正路阿本爌肉飯", cuisine: "爌肉飯", lat: 24.0741, lng: 120.5398, time: ["midnight"], rating: 4.0, reviews: 880, address: "彰化市中正路二段160號" },
     { name: "大埔爌肉飯", cuisine: "爌肉飯", lat: 24.0671, lng: 120.5342, time: ["lunch", "dinner"], rating: 4.1, reviews: 620, address: "彰化市大埔路442號" },
@@ -43,7 +45,7 @@ const restaurantDatabase = [
     { name: "藏壽司 (彰化街邊店)", cuisine: "日式", lat: 24.0855, lng: 120.5399, time: ["lunch", "dinner"], rating: 4.6, reviews: 3100, address: "彰化市金馬路三段" },
     { name: "壽司郎 (彰化金馬店)", cuisine: "日式", lat: 24.0892, lng: 120.5358, time: ["lunch", "dinner"], rating: 4.5, reviews: 2800, address: "彰化市金馬路二段" },
 
-    // 🍝 義大利麵、美式、咖哩、小簡餐
+    // 橫跨各區：義大利麵、美式、咖哩、小簡餐
     { name: "努拉義大利麵", cuisine: "義大利麵", lat: 24.0674, lng: 120.5412, time: ["lunch", "dinner"], rating: 4.3, reviews: 750, address: "彰化市旭光路243號" },
     { name: "小餐館 Alternate Bistro", cuisine: "義大利麵", lat: 24.0655, lng: 120.5422, time: ["lunch", "dinner"], rating: 4.5, reviews: 890, address: "彰化市仁愛路100號" },
     { name: "古拉爵義式屋 (彰化家樂福店)", cuisine: "義大利麵", lat: 24.0901, lng: 120.5342, time: ["lunch", "dinner"], rating: 4.1, reviews: 1400, address: "彰化市金馬路二段321號" },
@@ -66,7 +68,7 @@ const restaurantDatabase = [
 
     // 🍹 螞蟻人專屬：彰化木瓜牛奶、蛋黃酥、老字號甜點
     { name: "彰化木瓜牛乳大王", cuisine: "飲料", lat: 24.0791, lng: 120.5411, time: ["lunch", "dinner"], rating: 4.2, reviews: 5600, address: "彰化市中華路37號" },
-    { name: "大元蔴薯 (鹹麻糬)", cuisine: "甜點", lat: 24.0781, lng: 120.5448, time: ["lunch", "dinner"], rating: 4.4, reviews: 3800, address: "彰化市民生路42巷14號" },
+    { name: "大元蔴薯 (鹹麻糬)", cuisine: "甜點", lat: 24.0781, lng: 120.5448, time: ["lunch", "dinner"], rating: 4.4, reviews: 3800, address: "彰化市內民生路42巷14號" },
     { name: "不二坊蛋黃酥", cuisine: "甜點", lat: 24.0811, lng: 120.5462, time: ["lunch", "dinner"], rating: 4.1, reviews: 8200, address: "彰化市中正路一段293號" }
 ];
 
@@ -149,13 +151,13 @@ function filterRestaurants(userLocation) {
     const inputCuisine = document.getElementById('cuisine').value.trim();
     const selectedTime = document.getElementById('time').value;
     
-    // 💡 獲取使用者自己填寫的距離數字（並轉為整數）
+    // 獲取使用者自己填寫的距離數字
     let selectedDistance = parseInt(document.getElementById('distance').value);
     
-    // 【安全機制】如果使用者沒填或是亂填小於等於0的數字，自動設定預設值 1000 公尺
+    // 安全機制：沒填填空、或數字小於等於0，自動預設為 1000 公尺
     if (isNaN(selectedDistance) || selectedDistance <= 0) {
         selectedDistance = 1000;
-        document.getElementById('distance').value = 1000; // 自動幫他在欄位補上 1000
+        document.getElementById('distance').value = 1000; 
     }
 
     const filteredList = [];
@@ -167,8 +169,6 @@ function filterRestaurants(userLocation) {
         );
 
         const matchCuisine = inputCuisine === "" || restaurant.cuisine.includes(inputCuisine) || inputCuisine.includes(restaurant.cuisine);
-        
-        // 💡 餐廳的距離必須小於等於使用者自行填寫的公尺數
         const matchDistance = calculatedDistance <= selectedDistance;
         const matchTime = restaurant.time.includes(selectedTime);
 
