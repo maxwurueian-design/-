@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今天吃什麼？餐廳抽選器 (新版 API)</title>
+    <title>今天吃什麼？餐廳抽選器 (免 API 版)</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Microsoft JhengHei', Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; color: #333; }
@@ -27,7 +27,7 @@
     
     <div class="form-group">
         <label for="cuisine">1. 飲食類型：</label>
-        <input type="text" id="cuisine" placeholder="例如：拉麵、火鍋、義大利麵 (留白代表不限)">
+        <input type="text" id="cuisine" placeholder="例如：拉麵、火鍋、義大利麵、便當 (留白代表不限)">
     </div>
 
     <div class="form-group">
@@ -36,14 +36,16 @@
             <option value="500">500 公尺以內 (走路 5 分鐘)</option>
             <option value="1000" selected>1000 公尺以內 (走路 10 分鐘)</option>
             <option value="3000">3000 公尺以內 (車程 10 分鐘)</option>
+            <option value="99999">不限距離</option>
         </select>
     </div>
 
     <div class="form-group">
         <label for="time">3. 吃飯時間：</label>
         <select id="time">
-            <option value="now">現在 (只顯示營業中餐廳)</option>
-            <option value="anytime">不限時間 (包含休息中餐廳)</option>
+            <option value="lunch">中午時段 (11:00 - 14:00)</option>
+            <option value="dinner" selected>晚上時段 (17:00 - 21:00)</option>
+            <option value="midnight">宵夜時段 (22:00 之後)</option>
         </select>
     </div>
 
@@ -51,14 +53,9 @@
 
     <hr style="border: 0; height: 1px; background: #ddd; margin: 30px 0;">
 
-    <h3>🔍 符合條件的真實餐廳 (Places API New)：</h3>
+    <h3>🔍 符合條件的餐廳清單：</h3>
     <div id="results"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUbMqnq9yZ1_ZJzZCFxoG6sqn-DY3ZR6Y&libraries=places"></script>
     <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
