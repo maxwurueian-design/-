@@ -69,13 +69,12 @@ const restaurantDatabase = [
 ];
 
 // ═══════════════════════════════════════
-// 🚀 核心：無限動力演算法（自動補滿至整整 1000 間店）
+// 🚀 核心：無限動力演算法（精準自動補滿至整整 1000 間店）
 // ═══════════════════════════════════════
 const cuisinesPool = ["便當", "飲料", "火鍋", "拉麵", "牛肉麵", "餃子", "簡餐", "宵夜", "甜點", "義大利麵", "燒肉", "早午餐", "咖啡廳", "滷味", "炸雞"];
 const roadPool = ["大埔路", "中正路", "中山路", "南郭路", "曉陽路", "永安街", "三民路", "金馬路", "民族路", "成功路", "華山路", "陳稜路", "林森路", "實踐路", "彰南路"];
 const storeBrandPool = ["老張", "阿港", "陳家", "彰化味", "大彰化", "小地方", "巷弄口", "夯口味", "美味鮮", "好滋味", "一品香", "源珍", "飽胃站", "呷飽飽", "旺角"];
 
-// 算出目前手動寫了幾間，然後用迴圈自動產生剩下的店家，直到總數剛好等於 1000
 const currentCount = restaurantDatabase.length;
 const targetCount = 1000;
 
@@ -84,7 +83,7 @@ for (let i = currentCount + 1; i <= targetCount; i++) {
     const randomRoad = roadPool[Math.floor(Math.random() * roadPool.length)];
     const randomBrand = storeBrandPool[Math.floor(Math.random() * storeBrandPool.length)];
     
-    // 圍繞彰化火車站中心 (24.0814, 120.5383) 亂數產生小店家經緯度 (方圓約 3-4 公里內散落)
+    // 圍繞彰化火車站中心 (24.0814, 120.5383) 散落產生小店家經緯度 (方圓約 3-4 公里內)
     const offsetLat = (Math.random() - 0.5) * 0.04;
     const offsetLng = (Math.random() - 0.5) * 0.04;
     const calculatedLat = 24.0814 + offsetLat;
@@ -94,16 +93,16 @@ for (let i = currentCount + 1; i <= targetCount; i++) {
     let timeArr = ["lunch", "dinner"];
     if (randomCuisine === "宵夜" || randomCuisine === "滷味") timeArr = ["dinner", "midnight"];
     if (randomCuisine === "早午餐") timeArr = ["lunch"];
-    if (Math.random() > 0.8) timeArr.push("midnight"); // 部分餐廳支援深夜宵夜
+    if (Math.random() > 0.8) timeArr.push("midnight"); 
 
     restaurantDatabase.push({
-        name: `${randomBrand} ${randomCuisine} (${randomRoad}店)`,
+        name: `${randomBrand}${randomCuisine} (${randomRoad}第${i}號店)`,
         cuisine: randomCuisine,
         lat: calculatedLat,
         lng: calculatedLng,
         time: timeArr,
-        rating: parseFloat((3.6 + Math.random() * 1.3).toFixed(1)), // 評分落在 3.6 - 4.9 之間
-        reviews: Math.floor(20 + Math.random() * 1500), // 真實感評論數
+        rating: parseFloat((3.6 + Math.random() * 1.3).toFixed(1)), 
+        reviews: Math.floor(20 + Math.random() * 1500), 
         address: `彰化市${randomRoad}${Math.floor(Math.random() * 800) + 1}號`
     });
 }
