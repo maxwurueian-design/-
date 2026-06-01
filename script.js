@@ -1,6 +1,6 @@
- document.getElementById('searchBtn').addEventListener('click', searchSports);
+document.getElementById('searchBtn').addEventListener('click', searchSports);
 
-// 🎯 真實資料庫：完美對齊 center (運動中心)、school (國中小校園)、court (羽網球場/公園)
+// 🎯 真實資料庫：完美對齊 center (運動中心)、school (國中小校園)、court (羽網球場)
 const sportsDatabase = {
   "基隆市": [
     { name: "基隆市國民運動中心", address: "基隆市仁愛區仁愛路19號", hours: "06:00–22:00", type: "center", typeText: "綜合/國民運動中心" },
@@ -53,4 +53,19 @@ const sportsDatabase = {
   "南投縣": [
     { name: "南投縣立體育場", address: "南投縣南投市南陽路1號", hours: "05:00–22:00", type: "center", typeText: "綜合/國民運動中心" },
     { name: "南投國民中學", address: "南投縣南投市祖祠路361號", hours: "配合學校開放時間", type: "school", typeText: "籃球/體育館/校園" },
-    { name: "南投國民小學", address: "南投縣南投市彰南路二段105號", hours: "假日特定時間開放", type: "school", typeText
+    { name: "南投國民小學", address: "南投縣南投市彰南路二段105號", hours: "假日特定時間開放", type: "school", typeText: "籃球/體育館/校園" }
+  ],
+  "雲林縣": [
+    { name: "雲林縣立體育館", address: "雲林縣斗六市大學路三段2號", hours: "08:00–18:00", type: "center", typeText: "綜合/國民運動中心" },
+    { name: "斗六國民中學", address: "雲林縣斗六市文化路58號", hours: "配合學校開放時間", type: "school", typeText: "籃球/體育館/校園" },
+    { name: "鎮西國民小學", address: "雲林縣斗六市西平路3號", hours: "假日開放", type: "school", typeText: "籃球/體育館/校園" }
+  ],
+  "嘉義市": [
+    { name: "嘉義市國民運動中心", address: "嘉義市東區彌陀路327號", hours: "06:00–22:00", type: "center", typeText: "綜合/國民運動中心" },
+    { name: "北興國民中學體育館", address: "嘉義市東區博愛路二段89號", hours: "配合學校開放時間", type: "school", typeText: "籃球/體育館/校園" },
+    { name: "嘉義大學新民校區", address: "嘉義市西區新民路580號", hours: "06:00–21:30", type: "school", typeText: "籃球/體育館/校園" }
+  ],
+  "嘉義縣": [
+    { name: "嘉義縣立體育館", address: "嘉義縣朴子市朴子七路1號", hours: "08:00–17:00", type: "center", typeText: "綜合/國民運動中心" },
+    { name: "朴子國民中學", address: "嘉義縣朴子市大同路4號", hours: "配合學校開放時間", type: "school", typeText: "籃球/體育館/校園" },
+    { name: "大林國民小學運動場", address: "嘉義縣大林鎮中興路2號", hours: "課後與假日開放", type: "school", typeText: "籃球/體育館/校園" }
