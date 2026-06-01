@@ -129,14 +129,14 @@ var sportsDatabase = {
     { name: "新豐國民小學操場", address: "新竹縣新豐鄉新豐村", hours: "課後開放", type: "school", typeText: "偏鄉開放校園" },
     { name: "湖口鄉立運動公園網球場", address: "新竹縣湖口鄉達生路旁", hours: "06:00–21:00", type: "court", typeText: "鄉立網球場" },
     { name: "竹北世興空氣品質淨化區壘球場", address: "新竹縣竹北市光明六路東二段", hours: "日間開放", type: "court", typeText: "大型棒壘球場" },
-    { name: "竹北水圳森林公園休閒廣場", address: "新竹縣竹北市復興二路", hours: "24小時開放", type: "court", typeText: "森林運動廣場" },
+    { name: "竹北水圳森林公園休閒廣場", address: "新竹縣竹北市复興二路", hours: "24小時開放", type: "court", typeText: "森林運動廣場" },
     { name: "芎林鄉運動公園籃球場", address: "新竹縣芎林鄉文山路旁", hours: "全天開放", type: "court", typeText: "新設運動公園" },
     { name: "新埔鎮日本公園羽毛球場", address: "新竹縣新埔鎮成功街旁", hours: "日間開放", type: "court", typeText: "公園戶外羽球" },
     { name: "關西鎮立體育場", address: "新竹縣關西鎮中山路旁", hours: "06:00–18:00", type: "court", typeText: "鎮立田徑場" },
     { name: "寶山鄉文中二運動公園", address: "新竹縣寶山鄉大雅路", hours: "全天開放", type: "court", typeText: "科學園區旁運動場" },
     { name: "竹北河濱公園棒球場", address: "新竹縣竹北市中華路旁河濱", hours: "日間開放", type: "court", typeText: "河濱棒球場" },
     { name: "博愛國民中學桌球教室", address: "新竹縣竹北市博愛街356號", hours: "配合學校預約", type: "school", typeText: "校園桌球特訓" },
-    { name: "新興國民小學風雨球場", address: "新竹縣湖口鄉新興路", hours: "假日有限度開放", type: "school", typeText: "風雨活動場"地 }
+    { name: "新興國民小學風雨球場", address: "新竹縣湖口鄉新興路", hours: "假日有限度開放", type: "school", typeText: "風雨活動場地" }
   ],
   "苗栗縣": [
     { name: "苗栗縣立體育館", address: "苗栗縣苗栗市中正路191號", hours: "08:00–21:00", type: "center", typeText: "縣立體育館" },
@@ -282,4 +282,268 @@ var sportsDatabase = {
     { name: "太保市棒壘球專用場", address: "嘉義縣太保市縣府特區旁", hours: "日間開放", type: "court", typeText: "縣府特區壘球場" },
     { name: "竹崎親水公園休閒球場", address: "嘉義縣竹崎鄉竹崎村", hours: "全天開放", type: "court", typeText: "親水園區運動場" },
     { name: "中埔鄉頂六綜合運動廣場", address: "嘉義縣中埔鄉金蘭村", hours: "日間及夜間局部", type: "court", typeText: "阿里山公路旁球場" },
-    { name: "梅山鄉立運動公園網球場", address: "嘉
+    { name: "梅山鄉立運動公園網球場", address: "嘉義縣梅山鄉梅仔坑旁", hours: "日間開放", type: "court", typeText: "山城專用網球場" },
+    { name: "民雄國民中學風雨排球場", address: "嘉義縣民雄鄉文化路", hours: "課後開放", type: "school", typeText: "排球重點學校" },
+    { name: "南華大學九村體育基地", address: "嘉義縣大林鎮南華路一段", hours: "依校方公告", type: "school", typeText: "大學棒排球場" },
+    { name: "吳鳳科技大學綜合體育館", address: "嘉義縣民雄鄉建國路二段", hours: "預約開放", type: "school", typeText: "科大室內體育館" },
+    { name: "東石鄉漁人碼頭海濱沙灘排球場", address: "嘉義縣東石鄉彩霞大道", hours: "全天開放", type: "court", typeText: "沙灘排球專用" },
+    { name: "鹿草鄉立籃球場", address: "嘉義縣鹿草鄉鹿草村", hours: "全天開放", type: "court", typeText: "鄉里中心球場" },
+    { name: "溪口鄉綜合球場", address: "嘉義縣溪口鄉溪南村", hours: "日間開放", type: "court", typeText: "多功能戶外球場" },
+    { name: "番路鄉觸口遊客中心綠地運動場", address: "嘉義縣番路鄉觸口村", hours: "日間開放", type: "court", typeText: "山腳休閒大廣場" },
+    { name: "義竹鄉立桌球活動點", address: "嘉義縣義竹鄉六桂村活動中心", hours: "09:00–17:00", type: "court", typeText: "地方桌球俱樂部" }
+  ],
+  "台南市": [
+    { name: "永華國民運動中心", address: "台南市中西區中華西路二段30號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
+    { name: "台南市立體育館(桌球與羽球中心)", address: "台南市南區體育路10號", hours: "06:00–21:30", type: "center", typeText: "市立體育園區館" },
+    { name: "大成國民中學風雨球場", address: "台南市南區西門路一段306號", hours: "配合學校開放時間", type: "school", typeText: "國中風雨籃球" },
+    { name: "勝利國民小學操場球場", address: "台南市東區勝利路10號", hours: "課後及假日開放", type: "school", typeText: "成大旁熱門校園" },
+    { name: "後甲國民中學網球場", address: "台南市東區東平路260號", hours: "依校方公告為準", type: "school", typeText: "國中優質網球場" },
+    { name: "國立成功大學光復校區體育館", address: "台南市東區大學路1號", hours: "08:00–22:00", type: "school", typeText: "成大綜合體育館" },
+    { name: "國立台南大學體育館", address: "台南市中西區樹林街二段33號", hours: "配合校方規範", type: "school", typeText: "南大五妃綜合館" },
+    { name: "台南市立網球場(紅土專區)", address: "台南市南區體育路7號", hours: "06:00–22:00", type: "court", typeText: "頂級市立網球場" },
+    { name: "小東公園戶外網球與排球場", address: "台南市北區小東路與林森路口", hours: "全天開放(夜間照明)", type: "court", typeText: "熱門公園運動場" },
+    { name: "水萍塭公園溜冰滑輪場", address: "台南市南區夏林路4號", hours: "24小時開放", type: "court", typeText: "大型市區公園" },
+    { name: "安平育平高灘地棒壘球場", address: "台南市安平區州平路旁", hours: "日間開放", type: "court", typeText: "安平海風壘球場" },
+    { name: "永康區探索教育公園排球場", address: "台南市永康區永大路三段旁", hours: "全天開放", type: "court", typeText: "特色探索運動場" },
+    { name: "新營體育場室內羽球館", address: "台南市新營區長榮路二段78號", hours: "06:00–21:30", type: "center", typeText: "溪北大型綜合體育場" },
+    { name: "歸仁區運動公園籃球場", address: "台南市歸仁區公園路旁", hours: "附夜間照明", type: "court", typeText: "高鐵特區旁大公園" },
+    { name: "善化區文康育樂中心桌球室", address: "台南市善化區進學路旁", hours: "08:30–21:00", type: "center", typeText: "南科旁育樂館" },
+    { name: "麻豆區公立網球場", address: "台南市麻豆區客子寮旁", hours: "日間開放", type: "court", typeText: "地方專用網球場" },
+    { name: "佳里區體育公園排球場", address: "台南市佳里區安西里", hours: "全天開放", type: "court", typeText: "佳里綜合運動場" },
+    { name: "白河區運動公園運動場", address: "台南市白河區新興路", hours: "全天開放", type: "court", typeText: "關子嶺腳運動公園" },
+    { name: "崑山科技大學體育館", address: "台南市永康區大灣路949號", hours: "預約開放", type: "school", typeText: "私立科大體育館" },
+    { name: "台南第一高級中學體育館", address: "台南市東區民族路一段1號", hours: "配合假日開放", type: "school", typeText: "南一中綜合球場" }
+  ],
+  "高雄市": [
+    { name: "鳳山運動園區國民運動中心", address: "高雄市鳳山區光華路68號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
+    { name: "苓雅運動中心 (中正技擊館)", address: "高雄市苓雅區中正一路96號", hours: "06:00–22:00", type: "center", typeText: "核心地標運動中心" },
+    { name: "左營運動中心 (世運主場館旁)", address: "高雄市左營區世運大道100號", hours: "06:00–22:00", type: "center", typeText: "國家級大型館區" },
+    { name: "三民運動中心", address: "高雄市三民區陽明路旁的陽明溜冰場區", hours: "06:00–22:00", type: "center", typeText: "新型綜合運動中心" },
+    { name: "前鎮運動中心 (前鎮國中體育館)", address: "高雄市前鎮區新強路114號", hours: "06:00–22:00", type: "center", typeText: "校園複合運動中心" },
+    { name: "五福國民中學體育場", address: "高雄市苓雅區五福一路12號", hours: "課後與假日開放", type: "school", typeText: "市中心黃金校園球場" },
+    { name: "信義國民小學風雨球場", address: "高雄市新興區中正三路172號", hours: "假日局部開放", type: "school", typeText: "捷運站旁校園球場" },
+    { name: "國立中山大學體育館", address: "高雄市鼓山區蓮海路70號", hours: "07:00–22:00", type: "school", typeText: "西子灣海景體育館" },
+    { name: "國立高雄師範大學和平校區館", address: "高雄市苓雅區和平一路116號", hours: "08:00–21:30", type: "school", typeText: "高師大體育館" },
+    { name: "高雄高級中學風雨體育建築", address: "高雄市三民區建國三路50號", hours: "配合假日校友與市民開放", type: "school", typeText: "雄中頂級排籃球場" },
+    { name: "中正運動公園網球場", address: "高雄市苓雅區中正一路旁", hours: "06:00–22:00", type: "court", typeText: "紅土專用大型網球場" },
+    { name: "陽明溜冰滑輪特訓場", address: "高雄市三民區義華路旁", hours: "全天開放", type: "court", typeText: "國際標準溜冰場" },
+    { name: "岡山區綜合體育場", address: "高雄市岡山區體育路7號", hours: "05:00–21:30", type: "center", typeText: "北高雄大型綜合場" },
+    { name: "楠梓文中足球與排球場運動公園", address: "高雄市楠梓區常德路旁", hours: "日間及夜間照明", type: "court", typeText: "現代化足球排球園區" },
+    { name: "旗津區海岸運動排球場", address: "高雄市旗津區旗津三路旁", hours: "全天海風開放", type: "court", typeText: "海灘景觀球場" },
+    { name: "小港區大苓運動公園籃球場", address: "高雄市小港區放漢民路旁", hours: "全天夜間照明開放", type: "court", typeText: "南高雄熱門球場" },
+    { name: "仁武區運動公園慢速壘球場", address: "高雄市仁武區水管路旁", hours: "日間開放", type: "court", typeText: "工業區旁大壘球場" },
+    { name: "大寮區中庄排球專用場", address: "高雄市大寮區中庄路", hours: "全天開放", type: "court", typeText: "社區排球基地" },
+    { name: "路竹區體育公園網球場", address: "高雄市路竹區大社路旁", hours: "日間硬地開放", type: "court", typeText: "科學園區旁網球場" },
+    { name: "美濃區綜合運動中心運動場", address: "高雄市美濃區美濃中正路", hours: "06:00–18:00", type: "court", typeText: "客家山城運動場" }
+  ],
+  "屏東縣": [
+    { name: "屏東國民運動中心", address: "屏東縣屏東市勝利東路50號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
+    { name: "屏東縣立體育館", address: "屏東縣屏東市勝利路9號", hours: "08:00–22:00", type: "center", typeText: "千禧公園旁縣立館" },
+    { name: "屏東國民中學體育館", address: "屏東縣屏東市大連路70號", hours: "配合學校開放時間", type: "school", typeText: "國中活動中心" },
+    { name: "仁愛國民小學運動場", address: "屏東縣屏東市仁愛路98號", hours: "課後及假日開放", type: "school", typeText: "市中心國小球場" },
+    { name: "國立屏東大學民生校區體育館", address: "屏東縣屏東市民生路4之18號", hours: "08:00–21:30", type: "school", typeText: "屏大優質綜合館" },
+    { name: "屏東高級中學風雨籃球場", address: "屏東縣屏東市忠孝路231號", hours: "假日特定時段", type: "school", typeText: "屏中HBL熱血球場" },
+    { name: "千禧公園戶外排球與網球場", address: "屏東縣屏東市大連路旁", hours: "24小時開放(夜間點燈)", type: "court", typeText: "萬坪旗艦綠地運動場" },
+    { name: "潮州鎮立體育館", address: "屏東縣潮州鎮向日葵路旁", hours: "08:00–21:00", type: "center", typeText: "潮州鎮核心體育館" },
+    { name: "潮州運動公園溜冰場(國際滑輪溜冰場)", address: "屏東縣潮州鎮彭城路旁", hours: "06:00–21:00", type: "court", typeText: "世界金牌級滑輪場" },
+    { name: "東港鎮立東新運動公園籃球場", address: "屏東縣東港鎮船頭路", hours: "全天開放", type: "court", typeText: "黑鮪魚故鄉大球場" },
+    { name: "恆春鎮立體育館", address: "屏東縣恆春鎮天文路1號", hours: "08:00–17:00", type: "center", typeText: "古城國境之南體育館" },
+    { name: "恆春半島運動公園慢速壘球場", address: "屏東縣恆春鎮恆南路旁", hours: "海風日間開放", type: "court", typeText: "墾丁大門口壘球場" },
+    { name: "萬巒鄉立運動公園羽毛球場", address: "屏東縣萬巒鄉褒忠路旁", hours: "全天開放", type: "court", typeText: "豬腳之鄉休閒運動場" },
+    { name: "內埔鄉綜合運動場籃排球區", address: "屏東縣內埔鄉埔興路", hours: "附設照明夜間熱門", type: "court", typeText: "客家大鄉戶外運動場" },
+    { name: "長治鄉立百合部落排球場", address: "屏東縣長治鄉百合路旁", hours: "全天開放", type: "court", typeText: "原民風情排球基地" },
+    { name: "九如鄉綜合運動公園", address: "屏東縣九如鄉九如路旁", hours: "全天開放", type: "court", typeText: "國道橋下綜合公園" },
+    { name: "高樹鄉立體育場籃球區", address: "屏東縣高樹鄉高樹村", hours: "日間開放", type: "court", typeText: "水源保護區大運動場" },
+    { name: "國立屏東科技大學體育館", address: "屏東縣內埔鄉老埤村學府路", hours: "依校方公告", type: "school", typeText: "屏科大國家級綜合館" },
+    { name: "枋寮鄉立運動公園棒壘球場", address: "屏東縣枋寮鄉保生路旁", hours: "日間開放", type: "court", typeText: "鐵道海線交會運動場" },
+    { name: "麟洛鄉立運動公園網球場", address: "屏東縣麟洛鄉中山路旁", hours: "日間開放", type: "court", typeText: "國道三號旁網球公園" }
+  ],
+  "宜蘭縣": [
+    { name: "宜蘭國民運動中心", address: "宜蘭縣宜蘭市公園路53號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
+    { name: "宜蘭縣立體育館", address: "宜蘭縣宜蘭市中山路五段755號", hours: "08:00–22:00", type: "center", typeText: "縣立旗艦體育館" },
+    { name: "宜蘭市立運動公園籃球場", address: "宜蘭縣宜蘭市中山路五段50號", hours: "24小時營業", type: "court", typeText: "免雨遮大棚架籃球場" },
+    { name: "宜蘭市立運動公園紅土網球場", address: "宜蘭縣宜蘭市公園路旁", hours: "06:00–21:00", type: "court", typeText: "標準紅土網球場" },
+    { name: "宜蘭國民中學體育館", address: "宜蘭縣宜蘭市樹人路37號", hours: "配合學校開放時間", type: "school", typeText: "國中活動中心" },
+    { name: "中山國民小學風雨球場", address: "宜蘭縣宜蘭市崇聖街4號", hours: "假日開放", type: "school", typeText: "國小木地板球場" },
+    { name: "國立宜蘭大學綜合體育館", address: "宜蘭縣宜蘭市神農路一段1號", hours: "08:00–21:30", type: "school", typeText: "宜大室內體育館" },
+    { name: "羅東運動公園綜合體育館", address: "宜蘭縣羅東鎮公正路666號", hours: "06:00–22:00", type: "center", typeText: "羅東地標運動公園" },
+    { name: "羅東運動公園戶外排球與網球場", address: "宜蘭縣羅東鎮公正路旁", hours: "全天開放(夜間附照明)", type: "court", typeText: "頂級森林系排球網球" },
+    { name: "羅東國民中學活動中心", address: "宜蘭縣羅東鎮中華路137號", hours: "配合校規假日開放", type: "school", typeText: "國中羽桌球場" },
+    { name: "國立羅東高級中學體育場", address: "宜蘭縣羅東鎮公正路324號", hours: "課後開放", type: "school", typeText: "羅高優質運動校園" },
+    { name: "礁溪鄉立溫水游泳池與體育館", address: "宜蘭縣礁溪鄉礁溪路旁", hours: "06:00–21:00", type: "center", typeText: "溫泉鄉立運動館" },
+    { name: "頭城鎮立綜合體育館", address: "宜蘭縣頭城鎮開蘭路旁", hours: "08:00–17:00", type: "center", typeText: "衝浪聖地鎮立館" },
+    { name: "蘇澳鎮立運動公園慢速壘球場", address: "宜蘭縣蘇澳鎮聖愛路旁", hours: "日間開放", type: "court", typeText: "蘇澳港旁壘球公園" },
+    { name: "冬山鄉溪畔火車橋下籃球場", address: "宜蘭縣冬山鄉冬山火車站高架橋下", hours: "24小時開放免淋雨", type: "court", typeText: "全台最美橋下球場" },
+    { name: "五結鄉綜合運動公園", address: "宜蘭縣五結鄉五結路旁", hours: "全天開放", type: "court", typeText: "多功能草坪與球場" },
+    { name: "三星鄉綜合運動場籃排球區", address: "宜蘭縣三星鄉三星路旁", hours: "日間開放", type: "court", typeText: "蔥鄉核心戶外球場" },
+    { name: "員山鄉立運動公園網球場", address: "宜蘭縣員山鄉金車路旁", hours: "06:00–18:00", type: "court", typeText: "山腳優質硬地網球場" },
+    { name: "壯圍鄉立綜合體育廣場", address: "宜蘭縣壯圍鄉壯五路", hours: "全天開放", type: "court", typeText: "哈密瓜故鄉運動場" },
+    { name: "南澳鄉綜合體育館", address: "宜蘭縣南澳鄉蘇花路二段", hours: "日間預約制", type: "center", typeText: "泰雅原民綜合館" }
+  ],
+  "花蓮縣": [
+    { name: "花蓮縣立體育館 (花蓮小巨蛋)", address: "花蓮縣花蓮市達固湖灣大路23號", hours: "08:00–22:00", type: "center", typeText: "國家級花蓮小巨蛋" },
+    { name: "花蓮縣立網球場(國風專區)", address: "花蓮縣花蓮市林政街旁", hours: "06:00–21:30", type: "court", typeText: "公立紅土網球專場" },
+    { name: "國風國民中學體育館", address: "花蓮縣花蓮市林政街169號", hours: "配合學校開放時間", type: "school", typeText: "國中室內綜合場" },
+    { name: "明義國民小學活動中心", address: "花蓮縣花蓮市明義街107號", hours: "依學校開放公告", type: "school", typeText: "國小羽球桌球點" },
+    { name: "國立東華大學美崙校區綜合館", address: "花蓮縣花蓮市華西路123號", hours: "08:00–21:00", type: "school", typeText: "東華大學市區體育館" },
+    { name: "國立東華大學壽豐總校區體育特區", address: "花蓮縣壽豐鄉大學路二段1號", hours: "06:00–22:00", type: "school", typeText: "全東部頂級大學運動園區" },
+    { name: "花蓮高級中學風雨複合球場", address: "花蓮縣花蓮市民權路42號", hours: "假日特定時段開放", type: "school", typeText: "花中海景風雨籃球場" },
+    { name: "花蓮女子高級中學運動場", address: "花蓮縣花蓮市菁華街2號", hours: "課後有限開放", type: "school", typeText: "花女精緻綠茵校園" },
+    { name: "吉安鄉立體育館(中正館)", address: "花蓮縣吉安鄉中山路三段旁", hours: "08:00–17:00", type: "center", typeText: "吉安大鄉室內館" },
+    { name: "吉安鄉光華運動公園壘球場", address: "花蓮縣吉安鄉光華村", hours: "日間開放", type: "court", typeText: "工業區旁慢速壘球" },
+    { name: "新城鄉北埔運動公園籃球場", address: "花蓮縣新城鄉北埔路", hours: "夜間附照明開放", type: "court", typeText: "新城熱血戶外球場" },
+    { name: "秀林鄉民有部落排球基地", address: "花蓮縣秀林鄉民有路旁", hours: "全天開放", type: "court", typeText: "太魯閣山腳排球場" },
+    { name: "壽豐鄉立綜合運動場", address: "花蓮縣壽豐鄉壽山路", hours: "全天開放", type: "court", typeText: "縱谷平原鄉立球場" },
+    { name: "鳳林鎮立體育園區網球場", address: "花蓮縣鳳林鎮慢城路旁", hours: "06:00–18:00", type: "court", typeText: "國際慢城專用網球" },
+    { name: "光復鄉太巴塱部落綜合球場", address: "花蓮縣光復鄉光復路旁", hours: "全天開放", type: "court", typeText: "棒球名將搖籃部落場" },
+    { name: "瑞穗鄉立綜合運動公園籃球區", address: "花蓮縣瑞穗鄉溫泉路旁", hours: "全天開放", type: "court", typeText: "溫泉之鄉綜合運動公園" },
+    { name: "玉里鎮立體育館", address: "花蓮縣玉里鎮中正路旁", hours: "08:00–21:00", type: "center", typeText: "南花蓮最大室內綜合館" },
+    { name: "玉里秀姑巒溪高灘地壘球場", address: "花蓮縣玉里鎮虹橋旁高灘地", hours: "日間開放", type: "court", typeText: "景觀秀姑巒溪壘球場" },
+    { name: "富里鄉立綜合運動休閒廣場", address: "花蓮縣富里鄉中山路", hours: "全天開放", type: "court", typeText: "金針山腳鄉民運動點" },
+    { name: "太平洋公園(南濱段)極限運動場與排球場", address: "花蓮縣花蓮市海濱路", hours: "24小時海景照明開放", type: "court", typeText: "頂級海景極限與排球聖地" }
+  ],
+  "台東縣": [
+    { name: "台東縣立體育館", address: "台東縣台東市桂林北路201號", hours: "08:00–17:30", type: "center", typeText: "縣立旗艦體育館" },
+    { name: "台東縣立體育場(東海運動公園)", address: "台東縣台東市中華路二段旁", hours: "05:00–22:00", type: "center", typeText: "大型東海綜合公園" },
+    { name: "東海運動公園網球場", address: "台東縣台東市中華路二段", hours: "06:00–21:30", type: "court", typeText: "公立優質硬地網球" },
+    { name: "新生國民中學體育館", address: "台東縣台東市新生路641號", hours: "配合學校開放時間", type: "school", typeText: "國中籃排球特訓館" },
+    { name: "新生國民小學操場", address: "台東縣台東市更生路474巷45號", hours: "課後與假日開放", type: "school", typeText: "國小開放運動區" },
+    { name: "國立台東大學知本總校區綜合體育館", address: "台東縣台東市大學路二段369號", hours: "08:00–21:30", type: "school", typeText: "台東大學鏡面體育館" },
+    { name: "國立台東大學台東校區體育館", address: "台東縣台東市中華路一段684號", hours: "依校方公告", type: "school", typeText: "市區大學舊館" },
+    { name: "台東高級商業職業學校體育場", address: "台東縣台東市正氣路440號", hours: "配合假日校園開放", type: "school", typeText: "台東商校熱門籃球" },
+    { name: "台東高級中學風雨複合運動區", address: "台東縣台東市西平路1號", hours: "假日有限開放", type: "school", typeText: "東中HBL星光球場" },
+    { name: "卑南國民中學棒排球培訓場", address: "台東縣台東市更生北路旁", hours: "課後開放", type: "school", typeText: "棒球名校開放球場" },
+    { name: "卑南鄉太平綜合運動公園籃球場", address: "台東縣卑南鄉太平村", hours: "全天開放附夜間", type: "court", typeText: "卑南核心運動公園" },
+    { name: "鹿野鄉立高台排球場", address: "台東縣鹿野鄉高台路", hours: "日間熱氣球季旁開放", type: "court", typeText: "高台景觀排球場" },
+    { name: "關山鎮立體育公園慢速壘球場", address: "台東縣關山鎮隆盛路旁", hours: "日間開放", type: "court", typeText: "親水關山壘球園區" },
+    { name: "池上鄉綜合運動場籃排球區", address: "台東縣池上鄉大埔村", hours: "全天開放", type: "court", typeText: "米鄉核心綜合運動場" },
+    { name: "太麻里鄉金崙溫泉排球場", address: "台東縣太麻里鄉金崙村", hours: "全天溫泉風情開放", type: "court", typeText: "溫泉部落排球點" },
+    { name: "大武鄉立濱海運動廣場", address: "台東縣大武鄉大武街", hours: "全天海景開放", type: "court", typeText: "南迴公路大武運動場" },
+    { name: "成功鎮立綜合體育館", address: "台東縣成功鎮鎮海路旁", hours: "08:00–17:00", type: "center", typeText: "東海岸最大鎮立館" },
+    { name: "長濱鄉立綜合運動場籃球區", address: "台東縣長濱鄉長濱村", hours: "全天海線開放", type: "court", typeText: "長濱最北端運動場" },
+    { name: "東河鄉都蘭部落衝浪排球廣場", address: "台東縣東河鄉都蘭村", hours: "24小時開放", type: "court", typeText: "都蘭糖廠旁綜合場" },
+    { name: "綠島鄉公立多功能運動場", address: "台東縣綠島鄉中寮村", hours: "全天環島照明開放", type: "court", typeText: "綠島海景籃球排球場" }
+  ],
+  "澎湖縣": [
+    { name: "澎湖縣綜合體育館", address: "澎湖縣馬公市文化路31號", hours: "08:00–21:30", type: "center", typeText: "澎湖旗艦綜合體育館" },
+    { name: "澎湖縣立體育場(縣立田徑場)", address: "澎湖縣馬公市中華路111號", hours: "05:00–22:00", type: "center", typeText: "大型縣立田徑場" },
+    { name: "馬公國民中學體育館", address: "澎湖縣馬公市陽明路115號", hours: "配合學校開放時間", type: "school", typeText: "馬公國中室內綜合場" },
+    { name: "馬公國民小學操場球場", address: "澎湖縣馬公市光明路62號", hours: "假日特定時間開放", type: "school", typeText: "國小開放球場" },
+    { name: "國立澎湖科技大學體育館", address: "澎湖縣馬公市六合路300號", hours: "08:00–21:30", type: "school", typeText: "澎科大綜合體育館" },
+    { name: "馬公市公立紅土網球場", address: "澎湖縣馬公市六合路旁", hours: "06:00–18:00", type: "court", typeText: "菊島標準網球專區" },
+    { name: "觀音亭海濱運動公園籃球場", address: "澎湖縣馬公市介壽路旁觀音亭", hours: "24小時海景球場", type: "court", typeText: "全台最美海景夕陽球場" },
+    { name: "觀音亭溜冰滑輪標準場", address: "澎湖縣馬公市介壽路觀音亭園區", hours: "全天開放", type: "court", typeText: "海濱標準溜冰場" },
+    { name: "澎湖縣立中山棒球場", address: "澎湖縣馬公市新生路旁", hours: "日間賽事預約", type: "center", typeText: "縣立主棒球場" },
+    { name: "湖西鄉綜合運動公園排球場", address: "澎湖縣湖西鄉湖西村", hours: "全天開放", type: "court", typeText: "湖西大鄉戶外排球" },
+    { name: "白沙鄉立體育館籃球區", address: "澎湖縣白沙鄉赤崁村", hours: "08:00–17:00", type: "center", typeText: "跨海大橋旁鄉立館" },
+    { name: "西嶼鄉外垵運動廣場", address: "澎湖縣西嶼鄉外垵村", hours: "24小時漁火照明開放", type: "court", typeText: "外垵漁港景觀球場" },
+    { name: "中正高級中學(澎湖)體育館", address: "澎湖縣馬公市光復路旁", hours: "配合假日校方規範", type: "school", typeText: "澎湖高級中學球場" },
+    { name: "澎湖高級海事職業學校運動場", address: "澎湖縣馬公市民族路101號", hours: "課後開放", type: "school", typeText: "澎湖海事開放籃球場" },
+    { name: "文澳國民小學風雨桌球羽球館", address: "澎湖縣馬公市文學路", hours: "假日特定開放", type: "school", typeText: "桌球名校風雨館" },
+    { name: "石泉國民小學綜合運動區", address: "澎湖縣馬公市石泉里", hours: "課後開放", type: "school", typeText: "社區結合型校園" },
+    { name: "隘門沙灘國家級沙灘排球場", address: "澎湖縣湖西鄉隘門沙灘園區", hours: "全天海島陽光開放", type: "court", typeText: "頂級黃金沙灘排球場" },
+    { name: "東衛運動公園慢速壘球場", address: "澎湖縣馬公市東衛里", hours: "日間開放", type: "court", typeText: "東衛樞紐壘球場" },
+    { name: "澎湖縣立羽毛球專用訓練點", address: "澎湖縣馬公市體育路旁舊館", hours: "08:00–21:00", type: "center", typeText: "縣立羽球特訓點" },
+    { name: "七美鄉立海景綜合運動場", address: "澎湖縣七美鄉南港村", hours: "24小時全天雙心石滬旁", type: "court", typeText: "離島絕美海景籃排球場" }
+  ],
+  "金門縣": [
+    { name: "金門縣立體育館", address: "金門縣金城鎮民族路261號", hours: "08:00–21:30", type: "center", typeText: "縣立旗艦體育館" },
+    { name: "金門縣立體育場(田徑與網球場)", address: "金門縣金城鎮民族路旁", hours: "05:00–22:00", type: "center", typeText: "大型縣立運動園區" },
+    { name: "金城國民中學體育館", address: "金門縣金城鎮民權路32號", hours: "配合學校開放時間", type: "school", typeText: "金城國中室內綜合場" },
+    { name: "國立金門高級中學體育館與球場", address: "金門縣金城鎮光前路94號", hours: "配合校方規範開放", type: "school", typeText: "金門高中大操場籃球" },
+    { name: "國立金門大學綜合體育館", address: "金門縣金寧鄉大學路1號", hours: "08:00–21:30", type: "school", typeText: "金大頂級新穎體育館" },
+    { name: "金城鎮莒光湖畔運動公園", address: "金門縣金城鎮賢城路莒光樓旁", hours: "24小時開放", type: "court", typeText: "莒光樓景觀運動公園" },
+    { name: "金寧鄉立綜合運動公園籃球場", address: "金門縣金寧鄉仁愛新村旁", hours: "全天開放夜間照明", type: "court", typeText: "金寧熱門戶外場" },
+    { name: "金湖鎮綜合體育館(金門小巨蛋)", address: "金門縣金湖鎮士校路旁", hours: "08:00–21:30", type: "center", typeText: "金湖小巨蛋旗艦館" },
+    { name: "金湖鎮立新市公園溜冰滑輪場", address: "金門縣金湖鎮復興路旁", hours: "全天開放", type: "court", typeText: "新市商圈旁滑輪場" },
+    { name: "金沙鎮立綜合體育館", address: "金門縣金沙鎮沙美車站旁", hours: "08:00–17:30", type: "center", typeText: "沙美老街旁體育館" },
+    { name: "烈嶼鄉(小金門)體育館", address: "金門縣烈嶼鄉西路旁", hours: "08:00–17:00", type: "center", typeText: "小金門室內綜合體育館" },
+    { name: "烈嶼鄉東林綜合運動場籃排球區", address: "金門縣烈嶼鄉東林村", hours: "24小時小金門跨海大橋旁", type: "court", typeText: "小金門核心戶外運動場" },
+    { name: "國立金門高級農工職業學校館", address: "金門縣金湖鎮复興路二段", hours: "課後及假日開放", type: "school", typeText: "金門農工風雨排籃球" },
+    { name: "中正國民小學風雨複合球場", address: "金門縣金城鎮珠浦北路38號", hours: "假日有限度開放", type: "school", typeText: "金城鎮核心國小場" },
+    { name: "金湖國民小學活動中心", address: "金門縣金湖鎮林森路", hours: "預約制開放", type: "school", typeText: "國小羽球桌球訓練點" },
+    { name: "金寧中小學風雨運動大棚架", address: "金門縣金寧鄉安美村", hours: "課後開放", type: "school", typeText: "九年一貫校園運動場" },
+    { name: "金沙國民中學運動場籃球區", address: "金門縣金沙鎮六甲路", hours: "假日開放", type: "school", typeText: "沙美室外運動大場" },
+    { name: "后湖海濱公園沙灘排球專區", address: "金門縣金城鎮后湖海灘", hours: "全天藍海陽光開放", type: "court", typeText: "料羅灣海景沙灘排球" },
+    { name: "瓊林聚落社區綜合排球場", address: "金門縣金湖鎮瓊林村", hours: "全天古厝旁開放", type: "court", typeText: "閩南古厝風情排球場" },
+    { name: "水頭碼頭濱海綠地溜冰場", address: "金門縣金城鎮西海路", hours: "全天開放", type: "court", typeText: "小三通碼頭旁運動綠帶" }
+  ],
+  "連江縣": [
+    { name: "連江縣立南竿體育館", address: "連江縣南竿鄉介壽村254-2號", hours: "08:00–21:00", type: "center", typeText: "馬祖南竿旗艦體育館" },
+    { name: "連江縣立南竿網球場", address: "連江縣南竿鄉介壽村旁", hours: "06:00–18:00", type: "court", typeText: "戰地專用硬地網球場" },
+    { name: "介壽國民中小學體育場", address: "連江縣南竿鄉介壽村262號", hours: "配合學校開放時間", type: "school", typeText: "南竿核心中小學開放場" },
+    { name: "福澳運動場風雨籃球場", address: "連江縣南竿鄉福澳村福澳港旁", hours: "開放空間全天營業(附照明)", type: "court", typeText: "福澳碼頭港景免淋雨球場" },
+    { name: "福澳運動場標準溜冰滑輪場", address: "連江縣南竿鄉福澳村運動園區", hours: "全天開放", type: "court", typeText: "碼頭旁滑輪標準場" },
+    { name: "國立馬祖高級中學體育館", address: "連江縣南竿鄉介壽村262-1號", hours: "配合假日校方開放", type: "school", typeText: "馬中海景室內綜合體育館" },
+    { name: "清水村排球與桌球活動中心", address: "連江縣南竿鄉清水村旁", hours: "09:00–21:00", type: "court", typeText: "社區排球桌球聚落點" },
+    { name: "馬祖仁愛村(鐵板)沙灘排球場", address: "連江縣南竿鄉仁愛村鐵板沙灘", hours: "全天藍眼淚海景開放", type: "court", typeText: "戰地藍眼淚景觀沙灘排球" },
+    { name: "北竿鄉立綜合體育館", address: "連江縣北竿鄉塘岐村旁", hours: "08:00–21:00", type: "center", typeText: "北竿核心室內體育館" },
+    { name: "北竿塘岐社區風雨運動大棚架", address: "連江縣北竿鄉塘岐村機場旁", hours: "24小時開放(附照明)", type: "court", typeText: "機場旁免淋雨巨型籃球排球場" },
+    { name: "中山國民中小學(北竿)操場", address: "連江縣北竿鄉坂里村", hours: "課後開放", type: "school", typeText: "坂里大宅旁北竿開放校園" },
+    { name: "莒光鄉東莒社區活動中心桌球室", address: "連江縣莒光鄉東莒大坪村", hours: "09:00–17:00", type: "court", typeText: "東莒燈塔旁桌球點" },
+    { name: "莒光鄉西莒青帆港濱海籃球場", address: "連江縣莒光鄉西莒青帆村", hours: "24小時夜間照明", type: "court", typeText: "西莒小香港海景籃球場" },
+    { name: "敬恆國民中小學(西莒)綜合球場", address: "連江縣莒光鄉西莒青帆村", hours: "配合假日開放", type: "school", typeText: "西莒高地懸崖景觀校園" },
+    { name: "東引鄉立綜合體育館", address: "連江縣東引鄉中柳村旁", hours: "08:00–21:00", type: "center", typeText: "國境最北綜合體育館" },
+    { name: "東引國中小學風雨運動場", address: "連江縣東引鄉中柳村", hours: "課後開放", type: "school", typeText: "國境最北風雨排籃球場" },
+    { name: "東引直升機場旁濱海戶外籃球場", address: "連江縣東引鄉直升機場旁", hours: "全天照明開放", type: "court", typeText: "極北燈塔風情海景球場" },
+    { name: "津沙聚落防空綠地羽毛球點", address: "連江縣南竿鄉津沙村", hours: "日間開放", type: "court", typeText: "閩東石屋聚落羽球點" },
+    { name: "大坵島梅花鹿生態步道健行廣場", address: "連江縣北竿鄉大坵島碼頭旁", hours: "日間配合船班開放", type: "court", typeText: "生態慢跑休閒廣場" },
+    { name: "南竿四維村(西尾)活動中心桌球室", address: "連江縣南竿鄉四維村活動中心", hours: "09:00–17:00", type: "court", typeText: "落日景觀社區桌球點" }
+  ]
+};
+
+function searchSports() {
+  var selectedCity = document.getElementById('citySelect').value;
+  var selectedSport = document.getElementById('sportSelect').value;
+  
+  var loading = document.getElementById('loading');
+  var resultsDiv = document.getElementById('results');
+  
+  loading.classList.remove('hidden');
+  resultsDiv.innerHTML = '';
+  
+  setTimeout(function() {
+    loading.classList.add('hidden');
+    
+    var allVenues = sportsDatabase[selectedCity] || [];
+    
+    // 💡 修正後的篩選邏輯：當選擇 'all' 時，100% 吐出該縣市所有的 20+ 個場地
+    var filteredVenues = allVenues.filter(function(venue) {
+      if (selectedSport === "all") {
+        return true; 
+      }
+      return venue.type === selectedSport;
+    });
+    
+    if (filteredVenues.length === 0) {
+      resultsDiv.innerHTML = '<p style="color:#e74c3c; text-align:center; font-weight:bold; padding: 20px;">❌ 該縣市在此分類下暫無資料，請更換分類試試看！</p>';
+      return;
+    }
+    
+    filteredVenues.forEach(function(venue) {
+      var searchQuery = '台灣 ' + selectedCity + ' ' + venue.name;
+      
+      // 使用穩健的 '+' 字串拼接法，不使用模板字串，避免舊版瀏覽器或特定環境崩潰
+      var embedMapUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(searchQuery) + '&t=&z=15&ie=UTF8&iwloc=&output=embed';
+      var addressGoogleMapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(selectedCity + venue.address);
+      
+      var card = document.createElement('div');
+      card.className = 'card';
+      
+      var cardHTML = '';
+      cardHTML += '<h3>📍 ' + venue.name + ' <span class="tag tag-' + venue.type + '">' + venue.typeText + '</span></h3>';
+      cardHTML += '<p><strong>🏠 詳細地址：</strong>';
+      cardHTML += '  <a href="' + addressGoogleMapUrl + '" target="_blank" class="review-link" title="點擊直接開啟 Google Map 導航">';
+      cardHTML += '    ' + venue.address + ' 🔗 (點我開啟 Google 地圖真實導航)';
+      cardHTML += '  </a>';
+      cardHTML += '</p>';
+      cardHTML += '<p><strong>⏰ 開放時間：</strong> ' + venue.hours + '</p>';
+      cardHTML += '<div class="map-container">';
+      cardHTML += '  <iframe width="100%" height="100%" src="' + embedMapUrl + '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
+      cardHTML += '</div>';
+      
+      card.innerHTML = cardHTML;
+      resultsDiv.appendChild(card);
+    });
+  }, 300);
+}
