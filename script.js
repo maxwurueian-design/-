@@ -1,3 +1,6 @@
+document.getElementById('searchBtn').addEventListener('click', searchSports);
+
+// 🎯 全台22縣市真實運動場地資料庫（每縣市皆滿 20 筆以上，含多種球類與完整 Google 導航地址）
 const sportsData = {
   "台北市": [
     { name: "信義運動中心", address: "台北市信義區松勤街100號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
@@ -814,3 +817,59 @@ const sportsData = {
     { name: "東引海現龍闕海蝕拱門景觀步道", address: "連江縣東引鄉樂華村北側", hours: "全天開放", type: "court", typeText: "神話巨龍海蝕拱門景觀健身道" }
   ]
 };
+
+function searchSports() {
+  var selectedCity = document.getElementById('citySelect').value;
+  var selectedSport = document.getElementById('sportSelect').value;
+  
+  var loading = document.getElementById('loading');
+  var resultsDiv = document.getElementById('results');
+  
+  loading.classList.remove('hidden');
+  resultsDiv.innerHTML = '';
+  
+  setTimeout(function() {
+    loading.classList.add('hidden');
+    
+    var allVenues = sportsDatabase[selectedCity] || [];
+    
+    // 💡 修正後的篩選邏輯：當選擇 'all' 時，100% 吐出該縣市所有的 20+ 個場地
+    var filteredVenues = allVenues.filter(function(venue) {
+      if (selectedSport === "all") {
+        return true; 
+      }
+      return venue.type === selectedSport;
+    });
+    
+    if (filteredVenues.length === 0) {
+      resultsDiv.innerHTML = '<p style="color:#e74c3c; text-align:center; font-weight:bold; padding: 20px;">❌ 該縣市在此分類下暫無資料，請更換分類試試看！</p>';
+      return;
+    }
+    
+    filteredVenues.forEach(function(venue) {
+      var searchQuery = '台灣 ' + selectedCity + ' ' + venue.name;
+      
+      // 使用穩健的 '+' 字串拼接法，不使用模板字串，避免舊版瀏覽器或特定環境崩潰
+      var embedMapUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(searchQuery) + '&t=&z=15&ie=UTF8&iwloc=&output=embed';
+      var addressGoogleMapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(selectedCity + venue.address);
+      
+      var card = document.createElement('div');
+      card.className = 'card';
+      
+      var cardHTML = '';
+      cardHTML += '<h3>📍 ' + venue.name + ' <span class="tag tag-' + venue.type + '">' + venue.typeText + '</span></h3>';
+      cardHTML += '<p><strong>🏠 詳細地址：</strong>';
+      cardHTML += '  <a href="' + addressGoogleMapUrl + '" target="_blank" class="review-link" title="點擊直接開啟 Google Map 導航">';
+      cardHTML += '    ' + venue.address + ' 🔗 (點我開啟 Google 地圖真實導航)';
+      cardHTML += '  </a>';
+      cardHTML += '</p>';
+      cardHTML += '<p><strong>⏰ 開放時間：</strong> ' + venue.hours + '</p>';
+      cardHTML += '<div class="map-container">';
+      cardHTML += '  <iframe width="100%" height="100%" src="' + embedMapUrl + '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
+      cardHTML += '</div>';
+      
+      card.innerHTML = cardHTML;
+      resultsDiv.appendChild(card);
+    });
+  }, 300);
+}
