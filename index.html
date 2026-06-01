@@ -1,57 +1,35 @@
-<script>
-    // ⚠️ 稍後在 Vercel 部署完成後，把這裡換成 Vercel 給你的網址
-    // 例如：'https://your-project.vercel.app/api/recommend'
-    const BACKEND_URL = 'npx plugins add vercel/vercel-plugin'; 
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運動場館搜尋器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    async function getRecommendations() {
-        const location = document.getElementById('location').value;
-        const foodType = document.getElementById('foodType').value;
-        const distance = document.getElementById('distance').value;
-        const mealTime = document.getElementById('mealTime').value;
+  <div class="container">
+    <h1>🏋️‍♂️ 運動場館搜尋器 (內嵌地圖版)</h1>
+    <p>利用 OpenStreetMap 搜尋地點，並直接在網頁中內嵌 Google Map 畫面！</p>
+    
+    <div class="search-box">
+      <input type="text" id="sportInput" value="羽毛球" placeholder="例如：羽毛球、游泳、健身、籃球">
+      <select id="citySelect">
+        <option value="25.0339,121.5644">台北市</option>
+        <option value="25.0170,121.4626">新北市</option>
+        <option value="24.9937,121.3010">桃園市</option>
+        <option value="24.1477,120.6736">台中市</option>
+        <option value="22.9997,120.2270">台南市</option>
+        <option value="22.6273,120.3014">高雄市</option>
+      </select>
+      <button id="searchBtn">開始搜尋</button>
+    </div>
 
-        if (!location || !foodType) {
-            alert('請填寫目前位置與飲食類型！');
-            return;
-        }
+    <div id="loading" class="hidden">🔍 正在為您搜尋運動地點，請稍候...</div>
+    <div id="results"></div>
+  </div>
 
-        document.getElementById('loading').classList.remove('hidden');
-        document.getElementById('result').innerHTML = '';
-        document.getElementById('submitBtn').disabled = true;
+  <script src="script.js"></script>
+</body>
+</html>
 
-        try {
-            // 呼叫我們自己寫的安全後端
-            const response = await fetch(BACKEND_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ location, foodType, distance, mealTime })
-            });
-
-            const restaurants = await response.json();
-
-            let htmlContent = '';
-            restaurants.forEach(rest => {
-                htmlContent += `
-                    <div class="p-4 border border-gray-100 bg-gray-50 rounded-xl shadow-sm">
-                        <h3 class="text-lg font-bold text-gray-800">🏪 ${rest.name}</h3>
-                        <div class="text-sm text-gray-600 mt-1 grid grid-cols-2 gap-1">
-                            <p><strong>🏷️ 類型:</strong> ${rest.type}</p>
-                            <p><strong>📍 距離:</strong> ${rest.distance}</p>
-                        </div>
-                        <p class="text-sm text-gray-600 mt-2"><strong>⭐ 評價:</strong> ${rest.rating}</p>
-                        <div class="mt-2 p-2 bg-blue-50 text-blue-700 text-xs rounded-lg">
-                            💡 <strong>推薦理由:</strong> ${rest.reason}
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('result').innerHTML = htmlContent;
-
-        } catch (error) {
-            console.error(error);
-            alert('搜尋失敗，請稍後再試。');
-        } finally {
-            document.getElementById('loading').classList.add('hidden');
-            document.getElementById('submitBtn').disabled = false;
-        }
-    }
-</script>
