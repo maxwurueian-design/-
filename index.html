@@ -1,129 +1,56 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彰化美食 AI 隨選地圖</title>
+    <title>今天吃什麼？餐廳抽選器</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
-            background-color: #f5f6fa;
-            margin: 0;
-            padding: 20px;
-            color: #2f3640;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        h1 {
-            text-align: center;
-            color: #2f3640;
-            margin-bottom: 25px;
-            font-size: 24px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #dcdde1;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #353b48;
-        }
-        .api-box {
-            background-color: #fff5f5;
-            border: 1px dashed #ff6b6b;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #44bd32;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background-color: #4cd137;
-        }
-        #results {
-            margin-top: 25px;
-        }
-        .restaurant-card {
-            background: #fff;
-            border-left: 5px solid #44bd32;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-        .no-result {
-            text-align: center;
-            padding: 30px;
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
+        body { font-family: "Microsoft JhengHei", Arial, sans-serif; background-color: #f9f9f9; padding: 20px; }
+        .container { max-width: 500px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #e74c3c; font-size: 22px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        button:hover { background-color: #c0392b; }
+        #results { margin-top: 20px; }
+        .restaurant-card { border-left: 4px solid #e74c3c; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+        .info-tag { background: #eee; padding: 2px 6px; font-size: 12px; margin-right: 5px; border-radius: 3px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🍱 彰化美食 AI 即時隨選地圖</h1>
+    <h1>🍴 今天吃什麼？餐廳抽選器</h1>
     
-    <div class="api-box">
-        <div class="form-group" style="margin-bottom: 0;">
-            <label for="apiKey" style="color: #c23616;">🔑 Gemini API Key：</label>
-            <input type="password" id="apiKey" placeholder="AQ.Ab8RN6KDojZufwM4n1EhOf5lLHVupfgeQk3wrQtkehQjwe3qDA">
-            <small style="color: #7f8c8d; font-size: 12px; display: block; margin-top: 5px;">
-                * 留空則會嘗試讀取 app.js 內寫死的 Key。建議在此輸入以防代碼上傳 GitHub 外洩。
-            </small>
-        </div>
+    <div class="form-group" style="background: #fff3f3; padding: 10px; border-radius: 4px; border: 1px dashed #e74c3c;">
+        <label for="apiKey" style="color: #c0392b;">🔑 輸入您的 Gemini API Key：</label>
+        <input type="password" id="apiKey" placeholder="請在此貼上您的 Gemini API Key">
     </div>
 
     <div class="form-group">
-        <label for="cuisine">想吃什麼類型？</label>
-        <input type="text" id="cuisine" placeholder="例如：肉圓、爌肉飯、火鍋、飲料..." value="">
+        <label>1. 飲食類型：</label>
+        <input type="text" id="cuisine" value="拉麵">
     </div>
 
     <div class="form-group">
-        <label for="time">用餐時段</label>
+        <label>2. 離使用者距離 (公尺)：</label>
+        <input type="number" id="distance" value="1000">
+    </div>
+
+    <div class="form-group">
+        <label>3. 吃飯時間：</label>
         <select id="time">
-            <option value="lunch">🌞 中午 / 下午茶</option>
-            <option value="dinner">🌙 晚餐時段</option>
-            <option value="midnight">🦉 宵夜凌晨</option>
+            <option value="lunch">中午時段 (11:00 - 14:00)</option>
+            <option value="dinner" selected>晚上時段 (17:00 - 21:00)</option>
+            <option value="midnight">宵夜時段 (21:00 以後)</option>
         </select>
     </div>
 
-    <div class="form-group">
-        <label for="distance">搜尋範圍 (公尺)</label>
-        <input type="number" id="distance" value="2000" placeholder="例如：2000">
-    </div>
+    <button onclick="getUserLocation()">幫我決定！</button>
 
-    <button onclick="getUserLocation()">🤖 讓 Gemini AI 上網搜尋餐廳</button>
-
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+    <h3>🔍 符合條件的餐廳清單：</h3>
     <div id="results"></div>
 </div>
 
