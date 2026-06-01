@@ -85,7 +85,6 @@ button:hover {
   display: none !important;
 }
 
-/* 卡片排版 */
 .card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -109,6 +108,20 @@ button:hover {
   font-size: 15px;
   color: #4a5568;
 }
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #95a5a6;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.tag-sport { background-color: #e67e22; }
+.tag-school { background-color: #2ecc71; }
 
 .map-container {
   margin-top: 15px;
