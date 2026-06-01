@@ -1,109 +1,100 @@
-body {
-  font-family: "Microsoft JhengHei", Arial, sans-serif;
-  background-color: #f0f3f5;
-  color: #333;
-  padding: 20px;
-}
+document.getElementById('searchBtn').addEventListener('click', searchSports);
 
-.container {
-  max-width: 850px;
-  margin: 0 auto;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-h1 {
-  color: #1a252f;
-  margin-bottom: 8px;
-}
-
-.search-box {
-  display: flex;
-  gap: 12px;
-  margin: 25px 0;
-}
-
-input, select, button {
-  padding: 14px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-}
-
-input {
-  flex: 2;
-}
-
-select {
-  flex: 1;
-}
-
-button {
-  background-color: #27ae60;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-button:hover {
-  background-color: #219653;
-  transform: translateY(-1px);
-}
-
-#loading {
-  text-align: center;
-  font-weight: bold;
-  color: #e67e22;
-  margin: 20px 0;
-  font-size: 18px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-top: 6px solid #27ae60;
-  padding: 22px;
-  margin-bottom: 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-}
-
-.card h3 {
-  margin-top: 0;
-  color: #2c3e50;
-  font-size: 20px;
-}
-
-.card p {
-  margin: 10px 0;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.map-container {
-  margin-top: 15px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #ddd;
-}
-
-.review-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: #2980b9;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.review-link:hover {
-  text-decoration: underline;
+async function searchSports() {
+  const sportKeyword = document.getElementById('sportInput').value.trim();
+  const coords = document.getElementById('citySelect').value.split(',');
+  const lat = parseFloat(coords[0]);
+  const lon = parseFloat(coords[1]);
+  
+  const loading = document.getElementById('loading');
+  const resultsDiv = document.getElementById('results');
+  
+  if (!sportKeyword) {
+    alert('請輸入運動類型！');
+    return;
+  }
+  
+  loading.classList.remove('hidden');
+  resultsDiv.innerHTML = '';
+  
+  const delta = 0.035; 
+  
+  const overpassQuery = `
+    [out:json][timeout:25];
+    (
+      node["sport"~"${sportKeyword}",i](${lat-delta},${lon-delta},${lat+delta},${lon+delta});
+      way["sport"~"${sportKeyword}",i](${lat-delta},${lon-delta},${lat+delta},${lon+delta});
+      node["name"~"${sportKeyword}",i](${lat-delta},${lon-delta},${lat+delta},${lon+delta});
+      way["name"~"${sportKeyword}",i](${lat-delta},${lon-delta},${lat+delta},${lon+delta});
+    );
+    out center;
+  `;
+  
+  const url = 'https://overpass-api.de/api/interpreter';
+  
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: 'data=' + encodeURIComponent(overpassQuery)
+    });
+    
+    if (!response.ok) throw new Error('網絡回應錯誤');
+    
+    const data = await response.json();
+    loading.classList.add('hidden');
+    
+    const elements = data.elements || [];
+    if (elements.length === 0) {
+      resultsDiv.innerHTML = `<p style="color:#e74c3c; text-align:center; font-weight:bold;">❌ 找不到相關運動場館，請換個關鍵字再試試！</p>`;
+      return;
+    }
+    
+    elements.forEach((elem, index) => {
+      const tags = elem.tags || {};
+      const name = tags.name || `運動場所 #${index + 1}`;
+      
+      const openingHours = tags.opening_hours || '未登錄（可查看下方地圖標記之即時狀態）';
+      const city = tags['addr:city'] || '';
+      const district = tags['addr:district'] || '';
+      const street = tags['addr:street'] || '';
+      const housenumber = tags['addr:housenumber'] || '';
+      let fullAddress = `${city}${district}${street}${housenumber}`;
+      if (!fullAddress) fullAddress = '地圖未標記詳細地址（請參考下方地圖導航）';
+      
+      const selectedCityText = document.getElementById('citySelect').options[document.getElementById('citySelect').selectedIndex].text;
+      const searchQuery = `${selectedCityText} ${name}`;
+      
+      // ✅ 修正點：獨立成行，完美閉合字串樣板，動態組裝內嵌與外連網址
+      const embedMapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(searchQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+      const externalMapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(searchQuery)}`;
+      
+      const card = document.createElement('div');
+      card.className = 'card';
+      
+      // ✅ 修正點：利用正確的反單引號 ` 開頭與結尾，完整塞入內嵌 iframe
+      card.innerHTML = `
+        <h3>📍 ${name}</h3>
+        <p><strong>🏠 詳細地址：</strong> ${fullAddress}</p>
+        <p><strong>⏰ 營運時間：</strong> ${openingHours}</p>
+        <p><strong>⭐️ 評價資訊：</strong> <a href="${externalMapUrl}" target="_blank" class="review-link">點我前往 Google Maps 查看詳細評論與星等</a></p>
+        
+        <div class="map-container">
+          <iframe 
+            width="100%" 
+            height="250" 
+            src="${embedMapUrl}" 
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0">
+          </iframe>
+        </div>
+      `;
+      resultsDiv.appendChild(card);
+    });
+    
+  } catch (error) {
+    loading.classList.add('hidden');
+    resultsDiv.innerHTML = `<p style="color:#e74c3c; text-align:center; font-weight:bold;">連線失敗！錯誤原因: ${error.message}</p>`;
+  }
 }
