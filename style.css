@@ -115,13 +115,14 @@ button:hover {
   font-size: 12px;
   font-weight: bold;
   color: white;
-  background-color: #95a5a6;
   border-radius: 4px;
   margin-left: 10px;
+  vertical-align: middle;
 }
 
-.tag-sport { background-color: #e67e22; }
+.tag-center { background-color: #e67e22; }
 .tag-school { background-color: #2ecc71; }
+.tag-court { background-color: #9b59b6; }
 
 .map-container {
   margin-top: 15px;
@@ -132,7 +133,7 @@ button:hover {
 }
 
 .review-link {
-  color: #e74c3c;
+  color: #3498db;
   text-decoration: none;
   font-weight: bold;
 }
