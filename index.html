@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚴‍♂️ 全台 22 縣市真實運動場館搜尋器</title>
+  <title>🚴‍♂️ 全台22縣市校園與運動場館搜尋器</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>🏋️‍♂️ 全台縣市運動場館搜尋器</h1>
-    <p>整合官方權威資料，保證 22 縣市皆有真實場館，並自動內嵌 Google 地圖導航！</p>
+    <h1>🏫 全台縣市運動場地搜尋器</h1>
+    <p>整合各縣市國民運動中心、市立體育館、國中、國小及運動公園，點選即可內嵌 Google 地圖！</p>
     
     <div class="search-box">
       <select id="citySelect">
@@ -39,10 +39,11 @@
       </select>
 
       <select id="sportSelect">
-        <option value="綜合運動中心">綜合運動中心 / 體育館</option>
-        <option value="羽毛球">羽毛球 / 國民運動中心</option>
-        <option value="游泳池">游泳池 / 水上運動中心</option>
-        <option value="健身房">健身房 / 體適能中心</option>
+        <option value="all">顯示全部場地</option>
+        <option value="綜合/國民運動中心">綜合/國民運動中心</option>
+        <option value="籃球/體育館/校園">籃球/體育館/校園 (含國中小)</option>
+        <option value="羽毛球/網球">羽毛球 / 網球場</option>
+        <option value="游泳池">游泳池 / 水上中心</option>
       </select>
 
       <button id="searchBtn">開始搜尋</button>
