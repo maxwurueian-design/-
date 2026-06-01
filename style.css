@@ -1,58 +1,135 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚴‍♂️ 全台 22 縣市真實運動場館搜尋器</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+body {
+  font-family: "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  padding: 20px;
+  margin: 0;
+}
 
-  <div class="container">
-    <h1>🏋️‍♂️ 全台縣市運動場館搜尋器</h1>
-    <p>整合官方權威資料，保證 22 縣市皆有真實場館，並自動內嵌 Google 地圖導航！</p>
-    
-    <div class="search-box">
-      <select id="citySelect">
-        <option value="基隆市">基隆市</option>
-        <option value="台北市" selected>台北市</option>
-        <option value="新北市">新北市</option>
-        <option value="桃園市">桃園市</option>
-        <option value="新竹市">新竹市</option>
-        <option value="新竹&新竹縣">新竹縣</option>
-        <option value="苗栗縣">苗栗縣</option>
-        <option value="台中市">台中市</option>
-        <option value="彰化縣">彰化縣</option>
-        <option value="南投縣">南投縣</option>
-        <option value="雲林縣">雲林縣</option>
-        <option value="嘉義市">嘉義市</option>
-        <option value="嘉義縣">嘉義縣</option>
-        <option value="台南市">台南市</option>
-        <option value="高雄市">高雄市</option>
-        <option value="屏東縣">屏東縣</option>
-        <option value="宜蘭縣">宜蘭縣</option>
-        <option value="花蓮縣">花蓮縣</option>
-        <option value="台東縣">台東縣</option>
-        <option value="澎湖縣">澎湖縣</option>
-        <option value="金門縣">金門縣</option>
-        <option value="連江縣">連江縣 (馬祖)</option>
-      </select>
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
 
-      <select id="sportSelect">
-        <option value="綜合運動中心">綜合運動中心 / 體育館</option>
-        <option value="羽毛球">羽毛球 / 國民運動中心</option>
-        <option value="游泳池">游泳池 / 水上運動中心</option>
-        <option value="健身房">健身房 / 體適能中心</option>
-      </select>
+h1 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-align: center;
+}
 
-      <button id="searchBtn">開始搜尋</button>
-    </div>
+p {
+  color: #7f8c8d;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 15px;
+}
 
-    <div id="loading" class="hidden">🔍 正在安全連線並動態生成地圖中...</div>
-    
-    <div id="results"></div>
-  </div>
+.search-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: #fdfdfd;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #eef2f5;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+select, button {
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #dcdfe6;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#citySelect {
+  flex: 1;
+}
+
+#sportSelect {
+  flex: 1.5;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#loading {
+  text-align: center;
+  font-weight: bold;
+  color: #e67e22;
+  padding: 15px;
+  background-color: #fff9e6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 卡片排版 */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 6px solid #3498db;
+  padding: 24px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 22px;
+}
+
+.card p {
+  text-align: left;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #4a5568;
+}
+
+.map-container {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e0;
+  height: 300px;
+}
+
+.review-link {
+  color: #e74c3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.review-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .search-box {
+    flex-direction: column;
+  }
+}
