@@ -1,7 +1,7 @@
 document.getElementById('searchBtn').addEventListener('click', searchSports);
 
 // 🎯 全台22縣市真實運動場地資料庫（每縣市皆滿 20 筆以上，含多種球類與完整 Google 導航地址）
-const sportsData = {
+var sportsData = {
   "台北市": [
     { name: "信義運動中心", address: "台北市信義區松勤街100號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
     { name: "大安運動中心", address: "台北市大安區辛亥路三段55號", hours: "06:00–22:00", type: "center", typeText: "綜合運動中心" },
