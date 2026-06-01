@@ -5,29 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>今天吃什麼？餐廳抽選器</title>
     <style>
-        body { font-family: "Microsoft JhengHei", Arial, sans-serif; background-color: #f9f9f9; padding: 20px; }
-        .container { max-width: 500px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #e74c3c; font-size: 22px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        body { font-family: "Microsoft JhengHei", Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333; }
+        .container { max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #e74c3c; font-size: 24px; margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 15px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; background-color: #fafafa; }
+        input:focus, select:focus { outline: none; border-color: #e74c3c; background-color: #fff; }
+        button { width: 100%; padding: 14px; background-color: #e74c3c; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
         button:hover { background-color: #c0392b; }
-        #results { margin-top: 20px; }
-        .restaurant-card { border-left: 4px solid #e74c3c; padding: 10px; margin-bottom: 10px; background: #fafafa; }
-        .info-tag { background: #eee; padding: 2px 6px; font-size: 12px; margin-right: 5px; border-radius: 3px; }
+        #results { margin-top: 25px; }
+        .restaurant-card { border-left: 5px solid #e74c3c; padding: 15px; margin-bottom: 15px; background: #fafafa; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .info-tag { background: #eee; padding: 3px 8px; font-size: 12px; margin-right: 6px; border-radius: 4px; display: inline-block; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🍴 今天吃什麼？餐廳抽選器</h1>
+    <h1>🍽️ 今天吃什麼？餐廳抽選器</h1>
     
-    <div class="form-group" style="background: #fff3f3; padding: 10px; border-radius: 4px; border: 1px dashed #e74c3c;">
-        <label for="apiKey" style="color: #c0392b;">🔑 輸入您的 Gemini API Key：</label>
-        <input type="password" id="apiKey" placeholder="AQ.Ab8RN6I1yETciTywZnZI-6KHsreG5tTeGY4dgtzyMxXngSfL0A">
-    </div>
-
     <div class="form-group">
         <label>1. 飲食類型：</label>
         <input type="text" id="cuisine" value="拉麵">
@@ -49,7 +45,7 @@
 
     <button onclick="getUserLocation()">幫我決定！</button>
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
     <h3>🔍 符合條件的餐廳清單：</h3>
     <div id="results"></div>
 </div>
