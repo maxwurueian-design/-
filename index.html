@@ -1,55 +1,57 @@
- <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今天吃什麼？餐廳抽選器</title>
-    <style>
-        body { font-family: "Microsoft JhengHei", Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333; }
-        .container { max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { text-align: center; color: #e74c3c; font-size: 24px; margin-bottom: 25px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 15px; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; background-color: #fafafa; }
-        input:focus, select:focus { outline: none; border-color: #e74c3c; background-color: #fff; }
-        button { width: 100%; padding: 14px; background-color: #e74c3c; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
-        button:hover { background-color: #c0392b; }
-        #results { margin-top: 25px; }
-        .restaurant-card { border-left: 5px solid #e74c3c; padding: 15px; margin-bottom: 15px; background: #fafafa; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .info-tag { background: #eee; padding: 3px 8px; font-size: 12px; margin-right: 6px; border-radius: 4px; display: inline-block; }
-    </style>
-</head>
-<body>
+<script>
+    // ⚠️ 稍後在 Vercel 部署完成後，把這裡換成 Vercel 給你的網址
+    // 例如：'https://your-project.vercel.app/api/recommend'
+    const BACKEND_URL = '你的VERCEL網址/api/recommend'; 
 
-<div class="container">
-    <h1>🍽️ 今天吃什麼？餐廳抽選器</h1>
-    
-    <div class="form-group">
-        <label>1. 飲食類型：</label>
-        <input type="text" id="cuisine" value="拉麵">
-    </div>
+    async function getRecommendations() {
+        const location = document.getElementById('location').value;
+        const foodType = document.getElementById('foodType').value;
+        const distance = document.getElementById('distance').value;
+        const mealTime = document.getElementById('mealTime').value;
 
-    <div class="form-group">
-        <label>2. 離使用者距離 (公尺)：</label>
-        <input type="number" id="distance" value="1000">
-    </div>
+        if (!location || !foodType) {
+            alert('請填寫目前位置與飲食類型！');
+            return;
+        }
 
-    <div class="form-group">
-        <label>3. 吃飯時間：</label>
-        <select id="time">
-            <option value="lunch">中午時段 (11:00 - 14:00)</option>
-            <option value="dinner" selected>晚上時段 (17:00 - 21:00)</option>
-            <option value="midnight">宵夜時段 (21:00 以後)</option>
-        </select>
-    </div>
+        document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('submitBtn').disabled = true;
 
-    <button onclick="getUserLocation()">幫我決定！</button>
+        try {
+            // 呼叫我們自己寫的安全後端
+            const response = await fetch(BACKEND_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ location, foodType, distance, mealTime })
+            });
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-    <h3>🔍 符合條件的餐廳清單：</h3>
-    <div id="results"></div>
-</div>
+            const restaurants = await response.json();
 
-<script src="app.js"></script>
-</body>
-</html>
+            let htmlContent = '';
+            restaurants.forEach(rest => {
+                htmlContent += `
+                    <div class="p-4 border border-gray-100 bg-gray-50 rounded-xl shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-800">🏪 ${rest.name}</h3>
+                        <div class="text-sm text-gray-600 mt-1 grid grid-cols-2 gap-1">
+                            <p><strong>🏷️ 類型:</strong> ${rest.type}</p>
+                            <p><strong>📍 距離:</strong> ${rest.distance}</p>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-2"><strong>⭐ 評價:</strong> ${rest.rating}</p>
+                        <div class="mt-2 p-2 bg-blue-50 text-blue-700 text-xs rounded-lg">
+                            💡 <strong>推薦理由:</strong> ${rest.reason}
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('result').innerHTML = htmlContent;
+
+        } catch (error) {
+            console.error(error);
+            alert('搜尋失敗，請稍後再試。');
+        } finally {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('submitBtn').disabled = false;
+        }
+    }
+</script>
